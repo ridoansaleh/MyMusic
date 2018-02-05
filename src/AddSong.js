@@ -5,12 +5,25 @@ export default class FormSong extends Component {
 
     constructor(props){
         super(props);
-        this.state = { id:'', title: '', genre: 'Pop', singer: '' };
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleGenreChange = this.handleGenreChange.bind(this);
         this.handleSingerChange = this.handleSingerChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.getTheLastSongId = this.getTheLastSongId.bind(this);
+        this.transferToForm = this.transferToForm.bind(this);
+        if(props.id){
+            console.log(props);
+            this.state = { id:'', title: '', genre: 'Pop', singer: '' };
+            this.transferToForm(props);
+        }else{
+            this.state = { id:'', title: '', genre: 'Pop', singer: '' };
+        }
+    }
+
+    transferToForm(data) {
+        this.setState({
+            id: data.id, title: data.title, genre: data.genre, singer: data.singer
+        });
     }
 
     getTheLastSongId(){
@@ -37,7 +50,6 @@ export default class FormSong extends Component {
     }    
 
     handleSubmit(e) {
-        e.preventDefault();
         axios.post('/songs', {
             id : this.getTheLastSongId,
             title: this.state.title,
@@ -56,13 +68,13 @@ export default class FormSong extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" onChange={this.handleTitleChange} value={this.state.title} placeholder="Title" />
-                    <select onChange={this.handleGenreChange} value={this.state.genre}>
+                    <input type="text" className="form-input" onChange={this.handleTitleChange} value={this.state.title} placeholder="Title" />
+                    <select className="cs-select" onChange={this.handleGenreChange} value={this.state.genre}>
                         <option value="Pop">Pop</option>
                         <option value="Rock">Rock</option>
                         <option value="Country">Country</option>
                     </select>
-                    <input type="text" onChange={this.handleSingerChange} value={this.state.singer} placeholder="Singer" />
+                    <input type="text" className="form-input" onChange={this.handleSingerChange} value={this.state.singer} placeholder="Singer" />
                     <input type="submit" className="btn-save" value="Add Song" />
                 </form>
             </div>

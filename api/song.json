@@ -35,6 +35,24 @@
       "title": "When I Was Your Man",
       "genre": "Pop",
       "singer": "Bruno Mars"
+    },
+    {
+      "title": "Something Just Like This",
+      "genre": "Pop",
+      "singer": "The Chainsmokers & Coldplay",
+      "id": 7
+    },
+    {
+      "title": "Dusk Till Down",
+      "genre": "Pop",
+      "singer": "Zayn Malik ft Sia",
+      "id": 8
+    },
+    {
+      "title": "Party Doll",
+      "genre": "Pop",
+      "singer": "Mick Jagger",
+      "id": 9
     }
   ]
 }
